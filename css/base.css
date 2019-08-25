@@ -1,0 +1,544 @@
+/* ====================================================================
+　　　　　　　　　　　　　　　　　　　ページ全体
+==================================================================== */
+
+@charset "UTF-8";
+
+/* 基本設定 */
+
+/* ウェブフォント（M PLUS）を適用 */
+@import url("https://fonts.googleapis.com/css?family=M+PLUS+1p&display=swap&subset=japanese");
+
+* {
+  margin: 0;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+html {
+  width: 100%;
+}
+
+/* ページ全体の設定 */
+body {
+  font-family: 'M PLUS 1p', 'Hiragino Kaku Gothic Pro', sans-serif, 'メイリオ';
+  background-color: #ffffff;
+  color: #545454;
+  width: 100%;
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: 20px 1fr 20px;
+  grid-template-rows: 100px auto auto auto auto auto auto auto 100px;
+  grid-row-gap: 20px;
+  row-gap: 20px;
+}
+
+
+/* パーツ配置 */
+body > * {
+  grid-column: 2 / -2;
+}
+
+
+/* ------------------------------------- */
+
+/*リンクテキストの装飾*/
+a {
+/*リンクテキストの下線を消す*/
+  text-decoration: none;
+}
+a:link {
+/*リンク先未訪問*/
+  color: #202124;
+}
+a:link:hover {
+/*リンク先未訪問の時のホバー*/
+  color: #1A0DAB;
+/* ポイント時にリンクテキストに下線を表示 */
+  text-decoration: underline;
+}
+a:visited {
+/*リンク先訪問済み*/
+  color: #202124;
+}
+a:visited:hover {
+/*リンク先訪問済みの時のホバー*/
+  color: #1A0DAB;
+/* ポイント時にリンクテキストに下線を表示 */
+  text-decoration: underline;
+}
+
+/* ------------------------------------- */
+
+/* 画像リンクの装飾 */
+a img {
+  padding: 0.5px;
+  border: 0.5px solid #ccc;
+  transition: 0.1s;
+}
+a:hover img{
+  border: 0.5px solid #1A0DAB;
+  background: #1A0DAB;
+}
+
+/* ------------------------------------- */
+
+/*区切り線の設定　方法１*/
+/*.divider,.divider hr{
+  display: inline-block;
+}
+.divider {
+  width: 100%;
+}
+.divider hr {
+  width: calc(100% - calc(58px * 2));
+  border-top: 1px solid #FF3300;
+}
+.divider::after,.divider::before {
+  content: url(../images/raimon.png);
+}*/
+
+/*区切り線の設定　方法２*/
+.divider {
+display: flex;
+align-items: center;
+}
+.divider::before,
+.divider::after {
+content: url(../images/raimon.png);
+}
+
+.divider hr {
+  width: 90%;
+  border-top: 1px solid #FF3300;
+}
+
+/* ------------------------------------- */
+
+/* 戻るボタンの設定 */
+#page_top{
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  background: #FF3300;
+  opacity: 0.6;
+  border-radius: 50%;
+}
+#page_top a{
+  position: relative;
+  display: block;
+  width: 50px;
+  height: 50px;
+  text-decoration: none;
+}
+#page_top a::before{
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  content: '\f106';
+  font-size: 25px;
+  color: #fff;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  top: -5px;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  text-align: center;
+}
+
+/* ====================================================================
+　　　　　　　　　　　　　　　　　　　ヘッダー
+==================================================================== */
+/*グリッドレイアウト設定*/
+header {
+  display: grid;
+  grid-template-columns: 1fr 5em;
+  grid-template-rows: auto;
+      grid-template-areas: "brand language";
+}
+header .brand {
+  grid-area: brand;
+}
+header .language {
+  grid-area: language;
+}
+/* ------------------------- */
+/*フレックスボックス設定*/
+header .brand {
+  display: flex;
+  align-items: center;
+  padding-top: 1rem;
+}
+header .language nav ul {
+  list-style: none; /*リストマークを消す*/
+  display: flex;
+  justify-content: flex-end;
+}
+/* ------------------------- */
+/* 各コンテンツの位置を調整 */
+header .brand h1 {
+  padding-left: 1rem;
+  color: #545454;
+  font-size: 16px;
+}
+header .language nav ul li a {
+  text-decoration: none; /*リンクテキストの下線を消す*/
+  padding-right: 1rem;
+}
+/* ロゴの大きさ調整 */
+header .brand .logo img {
+  width: 38px;
+  height: 38px;
+}
+
+/* ====================================================================
+　　　　　　　　　　　　　　　　　　　メイン１
+==================================================================== */
+/* グリッドレイアウト設定 */
+/* 導入部分 */
+.main1 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas: "intro ramen_shoukai"
+                       "nagoya nagoya"
+}
+.intro {
+  grid-area: intro;
+  display: flex;
+  justify-content: center;
+}
+.ramen_shoukai {
+  grid-area: ramen_shoukai;
+  display: flex;
+  flex-direction: column;
+}
+.nagoya {
+  grid-area: nagoya;
+}
+.ramen_shoukai .states {
+  display: flex;
+  justify-content: start;
+}
+/* --------------------------------------- */
+/* 名古屋駅西口 */
+.toolbox {
+  grid-area: toolbox;
+  display: flex;
+}
+.appear {
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto;
+  grid-template-areas: "nagoya_shoukai"
+                       "nagoya_photo";
+  display: flex;
+  display: none;
+}
+.nagoya_shoukai {
+  grid-area: nagoya_shoukai;
+  display: flex;
+  justify-content: center;
+}
+.nagoya_photo {
+  grid-area: nagoya_photo;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+/* --------------------------------------- */
+/* 導入部分の背景色 */
+.intro, .ramen_shoukai {
+  background-color: #faf8f2;
+}
+
+/* 見出しの囲み枠 */
+.box_text h1 {
+  display: inline-block;
+  padding: 0.5rem;
+  margin: 0;
+  font-weight: bold;
+  border: solid 3px #FF3300;
+  border-radius: 5px; /*角の丸み*/
+}
+
+/* 画像を枠に入れて傾ける */
+.main1 .nagoya .nagoya_photo img.photo-frame {
+  border:10px solid #fff;
+  box-shadow:0 0 0 1px #ccc,1px 3px 8px 0 rgba(40,40,40,.3);
+  /* transform:rotate(-1deg) 傾き */
+  }
+
+/* メイン１の表示ボタン */
+.button {
+  display: inline-block;
+  max-width: 100%;
+  text-align: left;
+  font-size: 16px;
+  text-decoration: none;
+  border-radius: 4px;
+}
+
+.button:active {
+  transform: translateY(4px);
+  border-bottom: none;
+}
+
+/* アイコンの色設定 */
+.my-orange {
+  color: #fecb81;
+}
+.my-skyblue {
+  color: skyblue;
+}
+.my-red {
+  color: #FF3300;
+}
+.my-blue {
+  color: blue;
+}
+.my-green {
+  color: green;
+}
+/* キャプションの位置設定 */
+.nagoya .appear .nagoya_photo {
+  text-align: center;
+}
+/* ====================================================================
+　　　　　　　　　　　　　　　　　　　メイン２
+==================================================================== */
+/* グリッドレイアウト設定 */
+#main2 {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: auto auto;
+  grid-template-areas: "galleries_explain map_explain"
+                       "galleries all_map"
+}
+#main2 .galleries_explain {
+  grid-area: galleries_explain;
+}
+#main2 .map_explain {
+  grid-area: map_explain;
+}
+#main2 .galleries {
+  grid-area: galleries;
+  display: flex;
+  flex-wrap: wrap;
+}
+#main2 .all_map {
+  grid-area: all_map;
+}
+/* --------------------------------------- */
+/* ラーメン１０選の装飾 */
+.galleries_explain .explain {
+  font-size: larger;
+  font-weight: bold;
+}
+/* 最初の文字だけ装飾 */
+.galleries_explain .explain::first-letter {
+  color: #FF3300;
+  font-size: 2rem;
+}
+
+/* 目次画像周りの装飾 */
+#main2 .galleries figure {
+  margin: 0.75rem;
+  width: 45%;
+  border: 3px double #FF3300;
+  background-color: #faf8f2;
+  text-align: center;
+}
+.img-responsive {
+  display: block;
+  height: auto;
+  max-width: 100%;
+}
+.galleries_explain {
+  padding-left: 1rem;
+  padding-left: 1rem;
+  border-bottom: 3px solid #f0ebd9;
+}
+.map_explain {
+  display: flex;
+  align-items: flex-end;
+  padding-left: 0.5rem;
+}
+.all_map img {
+  margin-top: 0.8rem;
+  max-width: 100%;
+  position: -webkit-sticky; /*スクロールで地図を固定*/
+  position:sticky;
+  top: 5rem;　/*ここで止める位置を調整*/
+}
+/* ====================================================================
+　　　　　　　　　　　　　　　　　　　メイン３
+==================================================================== */
+/* グリッドレイアウト設定 */
+.main3 {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto auto auto;
+  grid-template-areas: "store_name ..........."
+                       "recommended map_detail"
+                       "recommended details";
+　grid-gap: 30px 15px;
+}
+.main3 .store_name {
+  grid-area: store_name;
+}
+.main3 .recommended {
+  grid-area: recommended;
+  display: flex;
+  flex-wrap: wrap;
+}
+.main3 .map_detail {
+  grid-area: map_detail;
+}
+.main3 .details {
+  grid-area: details;
+  display: flex;
+  flex-wrap: wrap;
+}
+.details {
+  display: grid;
+  flex-direction: column;
+  align-items: center;
+}
+/* --------------------------------------- */
+.main3 .store_name {
+  font-size: larger;
+  font-weight: bold;
+  padding-left: 1rem;
+  border-bottom: 3px solid #f0ebd9;
+}
+.main3 .store_name h3 {
+  padding-left: 5px;
+  border-left: 7px solid #ff6633;
+}
+.main3 .details {
+  margin-left: 2.5rem;
+}
+.gmap {
+height: 0;
+overflow: hidden;
+padding-bottom: 56.25%;
+position: relative;
+}
+.gmap iframe {
+position: absolute;
+left: 0;
+top: 0;
+height: 100%;
+width: 100%;
+}
+
+/* 詳細情報 */
+.info {
+  background-color: #faf8f2;
+}
+dl {
+  max-width: 100%;
+}
+dt {
+  float: left;
+  clear: left;
+  margin-right: 0.5em ;
+	width: 150px
+}
+dd {
+  float: left ;
+  margin-left: 1em ;
+}
+/*均等割り付け設定*/
+dt {
+  display: flex;
+  justify-content: space-between;
+}
+/* 詳細情報ここまで */
+
+/* レビューの星 */
+.rating {
+  display: inline-flex;
+}
+
+.star {
+  font-size: 1rem;
+  margin: 0 .05em;
+}
+
+.star::before {
+  content: '\f005';
+  color: #ffcb00;
+  font-weight: 900;
+  font-family: 'Font Awesome 5 Free';
+}
+
+.rating[data-rate="0"] .star:nth-child(n+1)::before,
+.rating[data-rate="0.5"] .star:nth-child(n+1)::before,
+.rating[data-rate="1"] .star:nth-child(n+2)::before,
+.rating[data-rate="1.5"] .star:nth-child(n+2)::before,
+.rating[data-rate="2"] .star:nth-child(n+3)::before,
+.rating[data-rate="2.5"] .star:nth-child(n+3)::before,
+.rating[data-rate="3"] .star:nth-child(n+4)::before,
+.rating[data-rate="3.5"] .star:nth-child(n+4)::before,
+.rating[data-rate="4"] .star:nth-child(n+5)::before,
+.rating[data-rate="4.5"] .star:nth-child(n+5)::before {
+  color: #7c7c7c;
+  font-weight: 400;
+}
+
+.rating[data-rate="0.5"] .star:nth-child(1)::before,
+.rating[data-rate="1.5"] .star:nth-child(2)::before,
+.rating[data-rate="2.5"] .star:nth-child(3)::before,
+.rating[data-rate="3.5"] .star:nth-child(4)::before,
+.rating[data-rate="4.5"] .star:nth-child(5)::before {
+  content: '\f5c0';
+  color: #ffcb00;
+  font-weight: 900;
+  font-family: 'Font Awesome 5 Free';
+}
+/* レビューの星ここまで */
+/* ====================================================================
+　　　　　　　　　　　　　　　　　　　フッター
+==================================================================== */
+/* まずはiPhone用のデザインを基本設定として記述する */
+
+footer {
+  margin-top: 2rem;
+}
+footer nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+}
+footer nav ul li {
+  min-width: 50%;
+}
+footer nav ul li a {
+  text-decoration: none;
+}
+.copyright {
+  text-align: center;
+}
+
+/* 次に横幅が576px以上の際の追加デザイン(iPhone横向き, iPad用)を書く */
+@media (min-width: 576px) {
+  footer nav ul li {
+    min-width: 33%;
+  }
+}
+
+/* 最後に横幅が768px以上の際の追加デザイン(Mac用)を書く */
+@media (min-width: 768px) {
+  footer nav ul li {
+    min-width: 25%;
+  }
+}
