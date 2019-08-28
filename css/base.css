@@ -31,9 +31,18 @@ body {
   max-width: 100%;
   display: grid;
   grid-template-columns: 20px 1fr 20px;
-  grid-template-rows: 100px auto auto auto auto auto auto auto 100px;
+  grid-template-rows: 
+                      [header] 100px
+                      [divider] auto
+                      [main1] auto
+                      [divider] auto
+                      [main2] auto
+                      [divider] auto
+                      [main3] auto
+                      [divider] auto
+                      [footer] 100px;
   grid-row-gap: 20px;
-  row-gap: 20px;
+  font-size: 16px;
 }
 
 
@@ -106,14 +115,27 @@ a:hover img{
 display: flex;
 align-items: center;
 }
-.divider::before,
+/* .divider::before,
 .divider::after {
 content: url(../images/raimon.png);
-}
+} */
 
 .divider hr {
   width: 90%;
   border-top: 1px solid #FF3300;
+}
+
+.divider::before,
+.divider::after {
+    /* margin:0 0 10 0; */
+    content:" ";
+    display:inline-block;
+    width: 25px;
+    height: 12px;
+    background:url(../images/raimon.png);
+    background-size:contain;
+    background-repeat: no-repeat;
+    vertical-align:middle;
 }
 
 /* ------------------------------------- */
@@ -159,9 +181,10 @@ content: url(../images/raimon.png);
 /*グリッドレイアウト設定*/
 header {
   display: grid;
-  grid-template-columns: 1fr 5em;
-  grid-template-rows: auto;
-      grid-template-areas: "brand language";
+  grid-template-columns: auto;
+  grid-template-rows: auto auto;
+      grid-template-areas: "language"
+                           "brand";
 }
 header .brand {
   grid-area: brand;
@@ -191,6 +214,7 @@ header .brand h1 {
 header .language nav ul li a {
   text-decoration: none; /*リンクテキストの下線を消す*/
   padding-right: 1rem;
+  font-size: 8px;
 }
 /* ロゴの大きさ調整 */
 header .brand .logo img {
@@ -205,10 +229,12 @@ header .brand .logo img {
 /* 導入部分 */
 .main1 {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
-  grid-template-areas: "intro ramen_shoukai"
-                       "nagoya nagoya"
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
+  grid-template-areas: "intro"
+                       "ramen_shoukai"
+                       "nagoya";
+  grid-row-gap: 20px;
 }
 .intro {
   grid-area: intro;
@@ -261,6 +287,7 @@ header .brand .logo img {
 
 /* 見出しの囲み枠 */
 .box_text h1 {
+  font-size: 16px;
   display: inline-block;
   padding: 0.5rem;
   margin: 0;
@@ -317,10 +344,12 @@ header .brand .logo img {
 /* グリッドレイアウト設定 */
 #main2 {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: auto auto;
-  grid-template-areas: "galleries_explain map_explain"
-                       "galleries all_map"
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto;
+  grid-template-areas: "galleries_explain"
+                       "galleries"
+                       "map_explain"
+                       "all_map";
 }
 #main2 .galleries_explain {
   grid-area: galleries_explain;
@@ -339,13 +368,12 @@ header .brand .logo img {
 /* --------------------------------------- */
 /* ラーメン１０選の装飾 */
 .galleries_explain .explain {
-  font-size: larger;
-  font-weight: bold;
+  font-size: 16px;
 }
 /* 最初の文字だけ装飾 */
 .galleries_explain .explain::first-letter {
   color: #FF3300;
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 /* 目次画像周りの装飾 */
@@ -384,12 +412,13 @@ header .brand .logo img {
 /* グリッドレイアウト設定 */
 .main3 {
   display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: auto auto auto;
-  grid-template-areas: "store_name ..........."
-                       "recommended map_detail"
-                       "recommended details";
-　grid-gap: 30px 15px;
+  grid-template-columns: auto;
+  grid-template-rows: auto auto auto auto;
+  grid-template-areas: "store_name"
+                       "recommended"
+                       "map_detail"
+                       "details";
+　 grid-row-gap: 20px;
 }
 .main3 .store_name {
   grid-area: store_name;
@@ -414,17 +443,13 @@ header .brand .logo img {
 }
 /* --------------------------------------- */
 .main3 .store_name {
-  font-size: larger;
-  font-weight: bold;
+  font-size: 16px
   padding-left: 1rem;
   border-bottom: 3px solid #f0ebd9;
 }
 .main3 .store_name h3 {
   padding-left: 5px;
   border-left: 7px solid #ff6633;
-}
-.main3 .details {
-  margin-left: 2.5rem;
 }
 .gmap {
 height: 0;
