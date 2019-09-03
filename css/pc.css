@@ -166,9 +166,9 @@ header .language nav ul li a {
   padding-right: 1rem;
 }
 /* ロゴの大きさ調整 */
-header .brand .logo img {
-  width: 72px;
-  height: 72px;
+header .brand .title img {
+  width: 100%;
+  height: auto;
 }
 
 /* ====================================================================
@@ -251,17 +251,20 @@ header .brand .logo img {
 
 /* メイン１の表示ボタン */
 .button {
+  osition: relative;
   display: inline-block;
-  max-width: 100%;
-  text-align: left;
-  font-size: 16px;
+  padding: 0.25em 0.5em;
   text-decoration: none;
-  border-radius: 4px;
-}
+  color: #FFF;
+  background: #fd9535;/*背景色*/
+  border-radius: 4px;/*角の丸み*/
+  box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+  font-weight: bold;
 
+}
 .button:active {
-  transform: translateY(4px);
-  border-bottom: none;
+  border-bottom: solid 2px #fd9535;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
 }
 
 /* アイコンの色設定 */
@@ -283,6 +286,10 @@ header .brand .logo img {
 /* キャプションの位置設定 */
 .nagoya .appear .nagoya_photo {
   text-align: center;
+}
+.main1 .intro .intro_ramen .img-responsive {
+  width: 100%
+  height: auto;
 }
 /* ====================================================================
 　　　　　　　　　　　　　　　　　　　メイン２
@@ -355,7 +362,7 @@ header .brand .logo img {
 　　　　　　　　　　　　　　　　　　　メイン３
 ==================================================================== */
 /* グリッドレイアウト設定 */
-.main3 {
+.store_container {
   display: grid;
   grid-template-columns: 1fr 2fr;
   grid-template-rows: auto auto auto;
@@ -364,18 +371,18 @@ header .brand .logo img {
                        "recommended details";
 　grid-gap: 30px 15px;
 }
-.main3 .store_name {
+.store_container  .store_name {
   grid-area: store_name;
 }
-.main3 .recommended {
+.store_container  .recommended {
   grid-area: recommended;
   display: flex;
   flex-wrap: wrap;
 }
-.main3 .map_detail {
+.store_container  .map_detail {
   grid-area: map_detail;
 }
-.main3 .details {
+.store_container  .details {
   grid-area: details;
   display: flex;
   flex-wrap: wrap;
@@ -386,19 +393,21 @@ header .brand .logo img {
   align-items: center;
 }
 /* --------------------------------------- */
-.main3 .store_name {
+.store_container  .store_name {
   font-size: larger;
   font-weight: bold;
   padding-left: 1rem;
   border-bottom: 3px solid #f0ebd9;
 }
-.main3 .store_name h3 {
+.store_container  .store_name h3 {
   padding-left: 5px;
   border-left: 7px solid #ff6633;
 }
-.main3 .details {
+.store_container .details {
   margin-left: 2.5rem;
 }
+
+/* Google Map */
 .gmap {
 height: 0;
 overflow: hidden;
@@ -417,25 +426,55 @@ width: 100%;
 .info {
   background-color: #faf8f2;
 }
-dl {
-  max-width: 100%;
+
+/* まずはiPhone用のデザインを基本設定として記述する */
+.info dl {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  /* flex-flow: column nowrap; */
+  border: 1px solid #ccc;
 }
-dt {
-  float: left;
-  clear: left;
-  margin-right: 0.5em ;
-	width: 150px
+
+.info dt,
+.info dd {
+  width: 100%;
+  background: #ddd;
+  padding: 10px;
+  box-sizing: border-box;
 }
-dd {
-  float: left ;
-  margin-left: 1em ;
+/* WebでもCSSだけで1行の均等割付、両端揃え */
+/* https://q-az.net/one-line-text-justify/ */
+.info dt {
+  display: flex;
+  justify-content: flex-start;
 }
-/*均等割り付け設定*/
-dt {
+.info dd {
+  padding: 10px;
+  margin: 0;
+  border-top: 1px solid #ccc;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+
+.info dl {
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-top: none;
+}
+.info dt {
+    width: 30%;
+}
+.info dt {
+    /* 均等割り付け設定 */
   display: flex;
   justify-content: space-between;
 }
-/* 詳細情報ここまで */
+.info dd {
+  width: 70%;
+}
+
 
 /* レビューの星 */
 .rating {

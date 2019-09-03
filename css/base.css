@@ -31,7 +31,7 @@ body {
   max-width: 100%;
   display: grid;
   grid-template-columns: 20px 1fr 20px;
-  grid-template-rows: 
+  grid-template-rows:
                       [header] 100px
                       [divider] auto
                       [main1] auto
@@ -206,20 +206,20 @@ header .language nav ul {
 }
 /* ------------------------- */
 /* 各コンテンツの位置を調整 */
-header .brand h1 {
+/* header .brand h1 {
   padding-left: 1rem;
   color: #545454;
   font-size: 16px;
-}
+} */
 header .language nav ul li a {
   text-decoration: none; /*リンクテキストの下線を消す*/
   padding-right: 1rem;
   font-size: 8px;
 }
 /* ロゴの大きさ調整 */
-header .brand .logo img {
-  width: 38px;
-  height: 38px;
+header .brand .title img {
+  width: 100%;
+  height: auto;
 }
 
 /* ====================================================================
@@ -296,27 +296,24 @@ header .brand .logo img {
   border-radius: 5px; /*角の丸み*/
 }
 
-/* 画像を枠に入れて傾ける */
-.main1 .nagoya .nagoya_photo img.photo-frame {
-  border:10px solid #fff;
-  box-shadow:0 0 0 1px #ccc,1px 3px 8px 0 rgba(40,40,40,.3);
-  /* transform:rotate(-1deg) 傾き */
+  /* メイン１の表示ボタン */
+  .button {
+    osition: relative;
+    display: inline-block;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #FFF;
+    background: #fd9535;/*背景色*/
+    border-radius: 4px;/*角の丸み*/
+    box-shadow: inset 0 2px 0 rgba(255,255,255,0.2), 0 2px 2px rgba(0, 0, 0, 0.19);
+    font-weight: bold;
+
+  }
+  .button:active {
+    border-bottom: solid 2px #fd9535;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.30);
   }
 
-/* メイン１の表示ボタン */
-.button {
-  display: inline-block;
-  max-width: 100%;
-  text-align: left;
-  font-size: 16px;
-  text-decoration: none;
-  border-radius: 4px;
-}
-
-.button:active {
-  transform: translateY(4px);
-  border-bottom: none;
-}
 
 /* アイコンの色設定 */
 .my-orange {
@@ -344,8 +341,8 @@ header .brand .logo img {
 /* グリッドレイアウト設定 */
 #main2 {
   display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: auto auto auto;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto auto auto;
   grid-template-areas: "galleries_explain"
                        "galleries"
                        "map_explain"
@@ -378,9 +375,8 @@ header .brand .logo img {
 
 /* 目次画像周りの装飾 */
 #main2 .galleries figure {
-  margin: 0.75rem;
-  width: 45%;
-  border: 3px double #FF3300;
+  margin: 0;
+  width: 50%;
   background-color: #faf8f2;
   text-align: center;
 }
@@ -393,6 +389,9 @@ header .brand .logo img {
   padding-left: 1rem;
   padding-left: 1rem;
   border-bottom: 3px solid #f0ebd9;
+}
+#main2 .galleries figure figcaption {
+  font-size: 0.8rem;
 }
 .map_explain {
   display: flex;
@@ -410,7 +409,7 @@ header .brand .logo img {
 　　　　　　　　　　　　　　　　　　　メイン３
 ==================================================================== */
 /* グリッドレイアウト設定 */
-.main3 {
+.store_container {
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: auto auto auto auto;
@@ -420,18 +419,18 @@ header .brand .logo img {
                        "details";
 　 grid-row-gap: 20px;
 }
-.main3 .store_name {
+.store_container .store_name {
   grid-area: store_name;
 }
-.main3 .recommended {
+.store_container .recommended {
   grid-area: recommended;
   display: flex;
   flex-wrap: wrap;
 }
-.main3 .map_detail {
+.store_container .map_detail {
   grid-area: map_detail;
 }
-.main3 .details {
+.store_container .details {
   grid-area: details;
   display: flex;
   flex-wrap: wrap;
@@ -442,12 +441,12 @@ header .brand .logo img {
   align-items: center;
 }
 /* --------------------------------------- */
-.main3 .store_name {
+.store_container .store_name {
   font-size: 16px
   padding-left: 1rem;
   border-bottom: 3px solid #f0ebd9;
 }
-.main3 .store_name h3 {
+.store_container .store_name h3 {
   padding-left: 5px;
   border-left: 7px solid #ff6633;
 }
@@ -469,25 +468,36 @@ width: 100%;
 .info {
   background-color: #faf8f2;
 }
-dl {
-  max-width: 100%;
-}
-dt {
-  float: left;
-  clear: left;
-  margin-right: 0.5em ;
-	width: 150px
-}
-dd {
-  float: left ;
-  margin-left: 1em ;
-}
-/*均等割り付け設定*/
-dt {
+
+/* まずはiPhone用のデザインを基本設定として記述する */
+.info dl {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  /* flex-flow: column nowrap; */
+  border: 1px solid #ccc;
 }
-/* 詳細情報ここまで */
+
+.info dt,
+.info dd {
+  width: 100%;
+  background: #ddd;
+  padding: 10px;
+  box-sizing: border-box;
+}
+/* WebでもCSSだけで1行の均等割付、両端揃え */
+/* https://q-az.net/one-line-text-justify/ */
+.info dt {
+  display: flex;
+  justify-content: flex-start;
+}
+.info dd {
+  padding: 10px;
+  margin: 0;
+  border-top: 1px solid #ccc;
+  background: #fff;
+  box-sizing: border-box;
+}
 
 /* レビューの星 */
 .rating {
