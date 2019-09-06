@@ -287,6 +287,10 @@ header .brand .title img {
 .nagoya .appear .nagoya_photo {
   text-align: center;
 }
+.main1 .intro .intro_ramen .img-responsive {
+  width: 100%
+  height: auto;
+}
 /* ====================================================================
 　　　　　　　　　　　　　　　　　　　メイン２
 ==================================================================== */
