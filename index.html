@@ -15,7 +15,7 @@
   <!-- ファビコン -->
   <link rel="shortcut icon" href="./images/favicon.ico">
   <!-- スマホ用アイコン -->
-  <link rel="apple-touch-icon" sizes="180×180″ href="./images/apple-touch-icon.png">
+  <link rel="apple-touch-icon" href="./images/apple-touch-icon.png">
 
   <!-- jQuery  -->
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -30,6 +30,19 @@
   <!-- レーダーチャート -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js"></script>
   <script src="./js/rader_chart.js"></script>
+
+  <!-- LINEボタン -->
+   <script src="https://d.line-scdn.net/r/web/social-plugin/js/thirdparty/loader.min.js" async="async" defer="defer"></script>
+
+   <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147433354-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-147433354-1');
+</script>
 </head>
 
 <body>
@@ -83,6 +96,10 @@
         <p class="text-right">
           <small>
             更新日: <time>2019年9月5日</time>
+            <!-- Twitterボタン -->
+            <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <!-- LINEボタン -->
+            <div class="line-it-button" data-lang="ja" data-type="share-a" data-ver="3" data-url="https://nagoya-research.com" data-color="default" data-size="small" data-count="true" style="display: none;"></div>
           </small>
         </p>
         <div class="toolbox">
